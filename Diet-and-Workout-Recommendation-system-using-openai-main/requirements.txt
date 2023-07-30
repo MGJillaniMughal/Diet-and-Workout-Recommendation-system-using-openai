@@ -1,0 +1,8 @@
+click==7.1.2
+Flask==2.0.1
+itsdangerous==1.1.0
+Jinja2==3.0.1
+MarkupSafe==2.0.1
+Werkzeug==2.0.1
+langchain==0.1.0 
+openai

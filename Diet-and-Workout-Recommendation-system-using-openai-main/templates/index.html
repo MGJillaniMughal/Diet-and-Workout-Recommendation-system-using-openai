@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diet and Workouts Recommendations</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <!-- Default styles (light mode) -->
+     <style>
+        .default-theme {
+            background-color: white;
+            color: black;
+        }
+
+        /* Dark mode styles */
+        .dark-theme {
+            background-color: black;
+            color: white;
+        }
+
+        /* Dark mode toggle button styles */
+        .toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+    <!-- Responsive CSS -->
+    <style>
+        /* Small devices (landscape phones) */
+        @media (max-width: 767.98px) {
+            .mycont {
+                padding: 5px;
+            }
+            .btn-lrg {
+                width: 100%;
+            }
+        }
+
+        /* Medium devices (tablets) */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .mycont {
+                padding: 10px;
+            }
+            .btn-lrg {
+                width: 100%;
+            }
+        }
+
+        /* Large devices (desktops) */
+        @media (min-width: 992px) {
+            .mycont {
+                padding: 20px;
+            }
+            .btn-lrg {
+                width: 50%;
+            }
+        }
+
+        
+
+    </style>
+</head>
+
+
+<body class="default-theme"> <!-- Set default theme class -->
+    <h1 class="text-center">Diet and Workouts Recommendations</h1>
+
+    <div class="container mycont mt-5" style="background:white;color:black;border-radius:15px; padding:10px;">
+        <h2 class="text-center">Personal Information</h2>
+
+        <form action="/recommend" method="post">
+            <!-- ... (existing input fields) ... -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" class="form-control" id="age" name="age" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <select class="form-control" id="gender" name="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="weight">Weight (kg):</label>
+                        <input type="number" class="form-control" id="weight" name="weight" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="height">Height (m):</label>
+                        <input type="number" class="form-control" id="height" name="height" step="0.01" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="veg_or_nonveg">Veg or Non-Veg:</label>
+                        <select class="form-control" id="veg_or_nonveg" name="veg_or_nonveg" required>
+                            <option value="veg">Veg</option>
+                            <option value="nonveg">Non-Veg</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="disease">Generic Disease:</label>
+                        <input type="text" class="form-control" id="disease" name="disease">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="region">Region:</label>
+                        <input type="text" class="form-control" id="region" name="region">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="allergics">Allergics:</label>
+                        <input type="text" class="form-control" id="allergics" name="allergics">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="foodtype">Food Type:</label>
+                        <input type="text" class="form-control" id="foodtype" name="foodtype">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="activity">Activity Level:</label>
+                        <select class="form-control" id="activity" name="activity" required>
+                            <option value="sedentary">Sedentary (little or no exercise)</option>
+                            <option value="light">Lightly active (light exercise/sports 1-3 days/week)</option>
+                            <option value="moderate">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                            <option value="active">Active (hard exercise/sports 6-7 days/week)</option>
+                            <option value="extra_active">Extra active (very hard exercise/sports and a physical job)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="calorie_goal">Calorie Goal:</label>
+                        <input type="number" class="form-control" id="calorie_goal" name="calorie_goal" required>
+                    </div>
+                </div>
+
+                <!-- Add more input fields as needed for the form -->
+                
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="preferred_cuisine">Preferred Cuisines:</label>
+                        <input type="text" class="form-control" id="preferred_cuisine" name="preferred_cuisine">
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="dietary_restrictions">Dietary Restrictions:</label>
+                        <input type="text" class="form-control" id="dietary_restrictions" name="dietary_restrictions">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="lunch">Lunch:</label>
+                        <input type="number" class="form-control" id="lunch" name="lunch">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- <button type="submit" class="btn btn-danger btn-lg mx-auto d-block mt-3" style="width: 200px;">Recommend Diets</button> -->
+            <button type="submit" class="btn btn-danger btn-block mt-3">Recommend Diets</button>
+
+        </form>
+    </div>
+
+
+    <!-- Dark mode toggle button -->
+    <button id="theme-toggle" class="toggle-btn">Dark Mode</button>
+
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme'); // Toggle dark-theme class on button click
+        });
+
+        // Detect system color scheme and apply appropriate theme on page load
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        if (prefersDarkScheme.matches) {
+            body.classList.add('dark-theme'); // Apply dark theme if system prefers dark
+        }
+    </script>
+</body>
+</html>
+
+

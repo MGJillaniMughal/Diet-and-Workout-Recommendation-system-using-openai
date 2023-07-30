@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diet and Workouts Recommendations</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Default styles (light mode) -->
+    <style>
+        .default-theme {
+            background-color: white;
+            color: black;
+        }
+
+        /* Dark mode styles */
+        .dark-theme {
+            background-color: black;
+            color: white;
+        }
+
+        /* Dark mode toggle button styles */
+        .toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Responsive CSS -->
+    <style>
+        /* Small devices (landscape phones) */
+        @media (max-width: 767.98px) {
+            .container {
+                padding: 5px;
+            }
+        }
+
+        /* Medium devices (tablets) */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .container {
+                padding: 10px;
+            }
+        }
+
+        /* Large devices (desktops) */
+        @media (min-width: 992px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+
+<body class="default-theme"> <!-- Set default theme class -->
+    <h1 class="text-center">Diet and Workouts Recommendations</h1>
+
+    <div class="container mt-5">
+        <h3>Restaurants in Pakistan:</h3>
+        {% for i in restaurant_names %}
+        <p>
+            {{i}}
+        </p>
+        {% endfor %}
+
+        <h3>Breakfast</h3>
+        {% for i in breakfast_names %}
+        <p>
+            {{i}}
+        </p>
+        {% endfor %}
+
+        <h3>Lunch</h3>
+        {% for i in lunch_names %}
+        <p>
+            {{i}}
+        </p>
+        {% endfor %}
+
+        <h3>Dinners</h3>
+        {% for i in dinner_names %}
+        <p>
+            {{i}}
+        </p>
+        {% endfor %}
+
+        <h3>Workouts Planes</h3>
+        {% for i in workout_names %}
+        <p>
+            {{i}}
+        </p>
+        {% endfor %}
+
+        <!-- Displaying preferred cuisines -->
+        <h3>Preferred Cuisines</h3>
+        {% if preferred_cuisine %}
+            <p>{{ preferred_cuisine }}</p>
+        {% else %}
+            <p>No preferred cuisines specified.</p>
+        {% endif %}
+
+        <!-- Displaying dietary restrictions -->
+        <h3>Dietary Restrictions</h3>
+        {% if dietary_restrictions %}
+            <p>{{ dietary_restrictions }}</p>
+        {% else %}
+            <p>No dietary restrictions specified.</p>
+        {% endif %}
+    </div>
+
+    <!-- Dark mode toggle button -->
+    <button id="theme-toggle" class="toggle-btn">Dark Mode</button>
+
+    <!-- Add Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme'); // Toggle dark-theme class on button click
+        });
+
+        // Detect system color scheme and apply appropriate theme on page load
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        if (prefersDarkScheme.matches) {
+            body.classList.add('dark-theme'); // Apply dark theme if system prefers dark
+        }
+    </script>
+</body>
+</html>
